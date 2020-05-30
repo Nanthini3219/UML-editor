@@ -5,14 +5,22 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3368774-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-3368774-6');
+
+</script>
 
 	<script data-ad-client="ca-pub-8461859034060807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 	<title>UML Editor</title>
 	<meta charset="UTF-8">
 	<meta name="author" content="Nanthini" />
-	<meta name="keywords" content="Text,UML,UML Design Software,Architect,Unified Modeling Language,Design Patterns,Networking,IT" />
+	<meta name="keywords" content="PlantText,PlantUML,UML Design Software,Architect,Unified Modeling Language,Design Patterns,Networking,IT" />
+	<meta name="description" content="PlantText is an online tool that quickly generates images from text. Primarily, it is used to generate UML (Unified Modeling Language) diagrams. It is based on a text language called PlantUML." />
 	<meta name="viewport" content="width=device-width, initial-scale=0.5">
 
 	<link href="css/styles.css?v=13.7" rel="stylesheet" type="text/css" />
@@ -28,7 +36,14 @@
 </head>
 <body>
 
-	
+	<div id="header">
+		<div id="header-left">
+			
+			<span id="logotext" title="The expert's design tool"></span><span id="logotextmsg">UML EDITOR - The expert's design tool</span><br>
+<br>
+		</div>
+		
+	</div>
 	<div id="body">
 		<form>
 		<div id="loader"></div>
@@ -118,34 +133,61 @@
 			<div id="menu-right">
 			</div>
 		</div>
-		
+<br><br>
+		<div id="main">
+			<div id="sidebar">
+				<div id="file-menu-dropdown">
+					<span title="Manage files"><button id="file-menu-button" style="width:100px;" type="submit" onclick="openFileMenu(); return false;">File Manager</button></span>
+					<div style="z-index:4000;" id="file-menu-list" class="file-menu-dropdown-content">
+						<a href="#" onclick="openFileMenuNew(); return false;">New</a>
+						<a href="#" onclick="openFileMenuOpen(); return false;">Open</a>
+						<a href="#" onclick="submitFileMenuSave(); return false;">Save</a>
+						<a href="#" onclick="openFileMenuSaveas(); return false;">Save As...</a>
+						<a href="#" onclick="openFiles(); return false;">Import / Export</a>
+						<a href="#" onclick="submitFileMenuDelete(); return false;">Delete</a>
+					</div>
+					<span title="Refresh (Alt + Enter)"><button id="refreshbutton" style="width:100px;" type="submit" onclick="refreshFromButton(); return false;">Refresh</button></span>
+					<span id="file-name-output-pre">File:</span><span id="file-name-output"></span>
+				</div>
+				<div id="editor"></div>
+			</div>
+			<div id="content"><br /><br />
+				<a id="plantimagelink" target="_blank" href="">PNG</a>&nbsp;|&nbsp;
+				<a id="plantsvglink" target="_blank" href="">SVG</a>&nbsp;|&nbsp;
+				<a id="planttxtlink" target="_blank" href="">TXT</a>&nbsp;|&nbsp;
+				<a id="planteditorlink" target="_blank" href="">Edit</a>
+			</div>
+			<div id="addblock">
+			</div>
+		</div>
 		<div id="setting">
 			<table style="border:0;width=100%">
-				<tr>
-					<td style="text-align:right;width:25%;">Layout:</td>
-					<td>
-						<input id="layout-portrait" type="radio" name="layout" value="portrait" onclick="portrait();" checked>Portrait
-						<input id="layout-landscape" type="radio" name="layout" value="landscape" onclick="landscape();">Landscape
-					</td>
-				</tr>
 				
+				<br>
+<br>
+
+				<tr>
+					<td style="text-align:right;">
+						<span title="This application uses a PlantUML server in order to generate the diagrams. If you have problems generating diagrams, please enter a different PlantUML server URL below. These servers have been known to go down from time to time. You can setup a server by reading the information. You can enter your own PlantUML server or revert by clicking 'Default'.">PlantUML Server:</span>
+					</td>
 					
-				
-				
-				<tr>
-					<td colspan="2" style="text-align:left;">
-						<div style="text-align: center; width:100%;" title="Save one editor document to the cloud"><input id="savebutton" class="otherbuttons" type="submit" value="Save Settings" onclick="saveFromButton(); return false;"></div><br />
-					</td>
 				</tr>
+				
 			</table>
 		</div>
 		<div id="code">
 			<table style="border:0;width=100%">
-				
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						Convert class diagrams to code stubs in one of the available programming languages.
+						<br / ><br / >
+						
+					</td>
+				</tr>
 				<tr>
 					<td style="text-align:left;width:25%">
 						<select name="language" id="language" class="otherdrops" size="1">
-							
+							<option value="coffeescript">Coffee Script</option>
 							<option value="csharp">C Sharp</option>
 							<option value="ecmascript5">ECMAScript 5</option>
 							<option value="ecmascript6">ECMAScript 6</option>
@@ -167,7 +209,13 @@
 		</table>
 		<div id="scripting">
 			<table style="border:0;width=100%">
-				
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						Convert raw UML text into a URL. The URL can then be copies into a browser in order to create the diagram image.
+						<br /><br />
+						
+					</td>
+				</tr>
 				<tr>
 					<td style="text-align:left;width:20%">
 						<select name="scriptingimagetype" id="scriptingimagetype" class="otherdrops" size="1">
@@ -207,33 +255,10 @@
 				</tr>
 			</table>
 		</div>
-		<div id="help">
-			
-		</div>
-		<div id="newspop">
-			<table style="border:0;width=100%">
-				<tr>
-					<td style="text-align:left;">
-						<img src="images/new.png" alt="New" width="25" style="align:left; display: inline-block;">
-						
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align:center;">
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align:center;">
-					</td>
-				</tr>
-				<tr>
-					
-				</tr>
-			</table>
-
-		</div>
+		
+		<br><br>
 		<div id="file-menu-new">
-			<table style="width:100%;">
+			<table style="width:10%;">
 				<tr>
 					<td style="text-align:right;width:25%;">
 						Name:
@@ -282,8 +307,9 @@
 				</tr>
 			</table>
 		</div>
+<br><br>
 		<div id="file-menu-saveas">
-			<table style="width:100%;">
+			<table style="width:10%;">
 				<tr>
 					<td style="text-align:right;width:25%;">
 						Name:
@@ -312,6 +338,7 @@
 		</form>
 	</div>
  	
+		
 	<script type="text/javascript" src="js/planttext.js?v=13.7"></script>
 
 </body>
