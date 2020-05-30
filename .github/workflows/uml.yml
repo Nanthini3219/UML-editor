@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3368774-6"></script>
+
+
+	<script data-ad-client="ca-pub-8461859034060807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<title>UML Editor</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Nanthini" />
+	<meta name="keywords" content="Text,UML,UML Design Software,Architect,Unified Modeling Language,Design Patterns,Networking,IT" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+
+	<link href="css/styles.css?v=13.7" rel="stylesheet" type="text/css" />
+	<link href="js/jquery-ui-1.8.24/themes/base/minified/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+	<script type="text/javascript" src="js/jquery-1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.24/ui/minified/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery-plantuml/rawdeflate.min.js?v=13.7"></script>
+	<script type="text/javascript" src="js/jquery-plantuml/rawinflate.min.js?v=13.7"></script>
+	<script type="text/javascript" src="js/jquery-plantuml/plantuml.min.js?v=13.7"></script>
+	<script type="text/javascript" src="js/ace-1.1.2/ace.js"></script>
+
+</head>
+<body>
+
+	
+	<div id="body">
+		<form>
+		<div id="loader"></div>
+		<div id="fademessage"></div>
+		<div id="menu">
+			<div id="menu-left">
+				<select name="samples" id="samples">
+					<option value="default">Select a sample...</option>
+					<optgroup label="Activity Diagram">
+						<option value="1">1 - Activity</option>
+						<option value="2">2 - Conditional</option>
+						<option value="3">3 - Notes</option>
+						<option value="4">4 - Repeat</option>
+						<option value="5">5 - While Loop</option>
+						<option value="6">6 - Parallel</option>
+						<option value="7">7 - Color</option>
+					</optgroup>
+					<optgroup label="Class Diagram">
+						<option value="8">1 - Classes</option>
+						<option value="9">2 - Relationships</option>
+						<option value="10">3 - Types</option>
+						<option value="11">4 - Properties / Methods</option>
+						<option value="12">5 - Interfaces</option>
+						<option value="13">6 - Packages</option>
+					</optgroup>
+					<optgroup label="Component Diagram">
+						<option value="14">1 - Components</option>
+						<option value="15">2 - Interfaces</option>
+						<option value="16">3 - Packages</option>
+						<option value="17">4 - Labels and Notes</option>
+					</optgroup>
+					<optgroup label="GraphViz Diagram">
+						<option value="50">1 - Hello World</option>
+						<option value="18">2 - World Dynamics</option>
+						<option value="51">3 - Data Structures</option>
+						<option value="52">4 - Graph Cluster Node Gradient</option>
+					</optgroup>
+					<optgroup label="Object Diagram">
+						<option value="19">1 - Simple Object</option>
+					</optgroup>
+					<optgroup label="Salt GUI Diagram">
+						<option value="20">1 - Basic Elements</option>
+						<option value="21">2 - Grid</option>
+						<option value="22">3 - Separators</option>
+						<option value="23">4 - Tree View</option>
+						<option value="24">5 - Brackets</option>
+						<option value="25">6 - Tabs</option>
+						<option value="26">7 - Menus</option>
+					</optgroup>
+					<optgroup label="Sequence Diagram">
+						<option value="27">1 - Participants</option>
+						<option value="28">2 - Messages</option>
+						<option value="29">3 - Comments</option>
+						<option value="30">4 - Message Styles</option>
+					</optgroup>
+					<optgroup label="State Diagram">
+						<option value="31">1 - Simple State</option>
+						<option value="32">2 - Simple Composite State</option>
+						<option value="33">3 - Simple Orthogonal Composite State</option>
+						<option value="34">4 - Concurrent State C3PO</option>
+						<option value="35">5 - Arrows and Notes</option>
+					</optgroup>
+					<optgroup label="Use Case Diagram">
+						<option value="36">1 - Use Cases</option>
+						<option value="37">2 - Actors</option>
+						<option value="38">3 - Connections</option>
+						<option value="39">4 - Stereotypes</option>
+						<option value="40">5 - Directions</option>
+						<option value="41">6 - Package</option>
+					</optgroup>
+					<optgroup label="XEarth Diagram">
+						<option value="42">1 - Basic</option>
+						<option value="43">2 - Add Place</option>
+						<option value="44">3 - Add More Stars</option>
+						<option value="45">4 - Relative View From Sun</option>
+						<option value="46">5 - Change Grid Configuration</option>
+						<option value="47">6 - Fixed Position without Shading</option>
+						<option value="48">7 - View From Moon Changing Luminacity</option>
+						<option value="49">8 - Adding Cities</option>
+					</optgroup>
+				</select>
+				<span title="Settings"><button type="submit" class="popupbuttons" onclick="openSettings(); return false;" style="vertical-align: middle;"><img src="/images/cog-2x.png" alt="Files"></button></span>
+				<span title="Code"><button type="submit" class="popupbuttons" onclick="openCode(); return false;" style="vertical-align: middle;"><img src="/images/code-2x.png" alt="Code"></button></span>
+				<span title="Scripting"><button type="submit" class="popupbuttons" onclick="openScripting(); return false;" style="vertical-align: middle;"><img src="/images/script-2x.png" alt="Script" ></button></span>
+				<span title="Questions"><button type="submit" class="popupbuttons" onclick="openHelp(); return false;" style="vertical-align: middle;"><img src="/images/question-mark-2x.png" alt="Question" ></button></span>
+			</div>
+			<div id="menu-right">
+			</div>
+		</div>
+		
+		<div id="setting">
+			<table style="border:0;width=100%">
+				<tr>
+					<td style="text-align:right;width:25%;">Layout:</td>
+					<td>
+						<input id="layout-portrait" type="radio" name="layout" value="portrait" onclick="portrait();" checked>Portrait
+						<input id="layout-landscape" type="radio" name="layout" value="landscape" onclick="landscape();">Landscape
+					</td>
+				</tr>
+				
+					
+				
+				
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<div style="text-align: center; width:100%;" title="Save one editor document to the cloud"><input id="savebutton" class="otherbuttons" type="submit" value="Save Settings" onclick="saveFromButton(); return false;"></div><br />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="code">
+			<table style="border:0;width=100%">
+				
+				<tr>
+					<td style="text-align:left;width:25%">
+						<select name="language" id="language" class="otherdrops" size="1">
+							
+							<option value="csharp">C Sharp</option>
+							<option value="ecmascript5">ECMAScript 5</option>
+							<option value="ecmascript6">ECMAScript 6</option>
+							<option value="java">Java</option>
+							<option value="php">PHP</option>
+							<option value="ruby">Ruby</option>
+							<option value="typescript">Type Script</option>
+						</select>
+					</td>
+					<td>
+						<input id="codebutton" class="otherbuttons" type="submit" value="Convert to Code" onclick="codeFromButton(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<textarea name="codeoutput" id="codeoutput" rows="10"></textarea>
+					</td>
+				</tr>
+		</table>
+		<div id="scripting">
+			<table style="border:0;width=100%">
+				
+				<tr>
+					<td style="text-align:left;width:20%">
+						<select name="scriptingimagetype" id="scriptingimagetype" class="otherdrops" size="1">
+							<option value="png">PNG</option>
+							<option value="svg">SVG</option>
+							<option value="txt">ASCI Text</option>
+						</select>
+					</td>
+					<td>
+						<input id="scriptingbutton" class="otherbuttons" type="submit" value="PlantUML to Link" onclick="urlFromPlantUML(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<textarea name="scriptingoutput" id="scriptingoutput" rows="10"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="files">
+			<table style="border:0;width=100%">
+				<tr>
+					<td style="text-align:right;width:25%;">
+						Import:
+					</td>
+					<td style="text-align:left;">
+						<input id="fileInput" type="file" onchange="importUML(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;width:25%;">
+						Export:
+					</td>
+					<td style="text-align:left;">
+						<input id="fileExport" class="otherbuttons" type="submit" value="Browse..." onclick="exportUML(); return false;">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="help">
+			
+		</div>
+		<div id="newspop">
+			<table style="border:0;width=100%">
+				<tr>
+					<td style="text-align:left;">
+						<img src="images/new.png" alt="New" width="25" style="align:left; display: inline-block;">
+						
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">
+					</td>
+				</tr>
+				<tr>
+					
+				</tr>
+			</table>
+
+		</div>
+		<div id="file-menu-new">
+			<table style="width:100%;">
+				<tr>
+					<td style="text-align:right;width:25%;">
+						Name:
+					</td>
+					<td style="text-align:left;width:75%;">
+						<input id="file-menu-new-name" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;width:25%;">
+					</td>
+					<td style="text-align:left;width:75%;">
+						<input id="file-menu-new-submit" class="otherbuttons" type="submit" value="New" onclick="submitFileMenuNew(); return false;">
+						<input id="file-menu-new-cancel" class="otherbuttons" type="submit" value="Cancel" onclick="submitFileMenuNewCancel(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<div class="messages" id="file-menu-new-message"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="file-menu-open">
+			<table style="border:0;width=100%">
+				<tr>
+					<td style="vertical-align:top;text-align:right;width:25%;">
+						Diagrams:
+					</td>
+					<td style="text-align:left;width:75%;">
+						<select id="file-menu-open-list" size="10" style="width:300px"></select>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;width:25%;">
+					</td>
+					<td style="text-align:left;">
+						<input id="file-menu-open-submit" class="otherbuttons" type="submit" value="Open" onclick="submitFileMenuOpen(); return false;">
+						<input id="file-menu-open-cancel" class="otherbuttons" type="submit" value="Cancel" onclick="submitFileMenuOpenCancel(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<div class="messages" id="file-menu-open-message"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="file-menu-saveas">
+			<table style="width:100%;">
+				<tr>
+					<td style="text-align:right;width:25%;">
+						Name:
+					</td>
+					<td style="text-align:left;width:75%;">
+						<input id="file-menu-saveas-name" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;width:25%;">
+					</td>
+					<td style="text-align:left;width:75%;">
+						<input id="file-menu-saveas-submit" class="otherbuttons" type="submit" value="Save As" onclick="submitFileMenuSaveas(); return false;">
+						<input id="file-menu-saveas-cancel" class="otherbuttons" type="submit" value="Cancel" onclick="submitFileMenuSaveasCancel(); return false;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:left;">
+						<div class="messages" id="file-menu-saveas-message"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<textarea name="description" id="description">
+		</textarea>	
+		</form>
+	</div>
+ 	
+	<script type="text/javascript" src="js/planttext.js?v=13.7"></script>
+
+</body>
+</html>
